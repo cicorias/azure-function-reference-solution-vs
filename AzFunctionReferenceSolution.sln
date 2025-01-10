@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzFunctionReferenceSolution", "AzFunctionReferenceSolution\AzFunctionReferenceSolution.csproj", "{02D27E8F-E718-4C7D-9443-BD74BE0102C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzFunctionReference.Tests", "AzFunctionReference.Tests\AzFunctionReference.Tests.csproj", "{6C35F215-06A4-47B1-9278-6750FB3125BE}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F404539B-D282-4D4F-9148-BAB03E7FD382}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{02D27E8F-E718-4C7D-9443-BD74BE0102C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02D27E8F-E718-4C7D-9443-BD74BE0102C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02D27E8F-E718-4C7D-9443-BD74BE0102C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C35F215-06A4-47B1-9278-6750FB3125BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C35F215-06A4-47B1-9278-6750FB3125BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C35F215-06A4-47B1-9278-6750FB3125BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C35F215-06A4-47B1-9278-6750FB3125BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F404539B-D282-4D4F-9148-BAB03E7FD382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F404539B-D282-4D4F-9148-BAB03E7FD382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F404539B-D282-4D4F-9148-BAB03E7FD382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F404539B-D282-4D4F-9148-BAB03E7FD382}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
