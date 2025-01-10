@@ -3,6 +3,7 @@
 
 using System;
 using Azure.Messaging;
+using Azure.Messaging.EventGrid;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
@@ -11,9 +12,10 @@ namespace AzFunctionReferenceSolution
     public class DefenderResultHandler(ILogger<DefenderResultHandler> logger)
     {
         [Function(nameof(DefenderResultHandler))]
-        public void Run([EventGridTrigger] CloudEvent cloudEvent)
+        public void Run([EventGridTrigger] EventGridEvent resultEvent)
         {
-            logger.LogInformation("Event type: {type}, Event subject: {subject}", cloudEvent.Type, cloudEvent.Subject);
+            logger.LogInformation("Received event with subject: {subject}", resultEvent.Subject);
+            //logger.LogInformation("Event type: {type}, Event subject: {subject}", cloudEvent.Type, cloudEvent.Subject);
         }
     }
 }
