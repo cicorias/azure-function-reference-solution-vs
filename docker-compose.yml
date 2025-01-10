@@ -1,0 +1,6 @@
+services:
+  azfunctionreferencesolution:
+    image: ${DOCKER_REGISTRY-}azfunctionreferencesolution
+    build:
+      context: .
+      dockerfile: AzFunctionReferenceSolution/Dockerfile
