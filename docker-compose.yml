@@ -9,14 +9,18 @@ services:
     build:
       context: .
       dockerfile: AzFunctionReferenceSolution/Dockerfile
-  eh-sb-emualtor:
+    networks:
+        - eventhubservice
+  ehemulator:
     container_name: "eventhubs-emulator"
     image: "mcr.microsoft.com/azure-messaging/eventhubs-emulator:latest"
     pull_policy: missing
     volumes:
       - "./config/event_hub_config.json:/Eventhubs_Emulator/ConfigFiles/Config.json"
     ports:
+    # Note the non-standard PORT for SB and EH
       - "5673:5672"
+      - "[::1]:5673:5672"
       - "9092:9092"
     environment:
       BLOB_SERVER: azurite
@@ -25,9 +29,7 @@ services:
     depends_on:
       - azurite
     networks:
-      eh-sb-emualtor:
-        aliases:
-          - "eventhubs-emulator"
+      eventhubservice:
 
   azurite:
     container_name: "azurite"
@@ -38,11 +40,11 @@ services:
       - "10001:10001"
       - "10002:10002"
     networks:
-      eh-sb-emualtor:
+      eventhubservice:
         aliases:
           - "azurite"
 
-  sb-emualtor:
+  sbemulator:
     container_name: "servicebus-emulator"
     image: mcr.microsoft.com/azure-messaging/servicebus-emulator:latest
     pull_policy: missing
@@ -50,6 +52,7 @@ services:
       - "./config/svc_bus_config.json:/ServiceBus_Emulator/ConfigFiles/Config.json"
     ports:
       - "5672:5672"
+      - "[::1]:5672:5672"
     environment:
       SQL_SERVER: sqledge
       ACCEPT_EULA: Y
@@ -57,21 +60,17 @@ services:
     depends_on:
       - sqledge
     networks:
-      eh-sb-emualtor:
-        aliases:
-          - "svcbus-emulator"
+      eventhubservice:
 
   sqledge:
     container_name: "sqledge"
     image: "mcr.microsoft.com/azure-sql-edge:latest"
     pull_policy: missing
     networks:
-      eh-sb-emualtor:
-        aliases:
-          - "sqledge"
+      eventhubservice:
     environment:
       ACCEPT_EULA: Y
       <<: *common-variables
 
 networks:
-  eh-sb-emualtor:
+  eventhubservice:

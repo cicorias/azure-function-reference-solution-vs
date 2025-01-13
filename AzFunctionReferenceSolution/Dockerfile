@@ -4,6 +4,7 @@
 FROM mcr.microsoft.com/azure-functions/dotnet-isolated:4-dotnet-isolated8.0 AS base
 WORKDIR /home/site/wwwroot
 EXPOSE 8080
+RUN apt update && apt install -y iputils-ping netcat-traditional
 
 
 # This stage is used to build the service project

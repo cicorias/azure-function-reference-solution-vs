@@ -4,9 +4,11 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "azfunctionreferencesolution": "DoNotStart",
+        "azfunctionreferencesolution": "StartDebugging",
         "azurite": "StartWithoutDebugging",
-        "sqledge": "StartWithoutDebugging"
+        "sqledge": "StartWithoutDebugging",
+        "ehemulator": "StartWithoutDebugging",
+        "sbemulator": "StartWithoutDebugging"
       }
     }
   }
