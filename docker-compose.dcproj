@@ -7,6 +7,8 @@
     <ProjectGuid>f404539b-d282-4d4f-9148-bab03e7fd382</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="config\event_hub_config.json" />
+    <None Include="config\svc_bus_config.json" />
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>

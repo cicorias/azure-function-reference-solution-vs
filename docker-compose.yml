@@ -1,6 +1,77 @@
+x-common-variables: &common-variables
+    # The password must be at least 8 characters long and contain characters from three of the following four sets: 
+    # Uppercase letters, Lowercase letters, Base 10 digits, and Symbols.
+  MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-ChangeMe!Please}
+
 services:
   azfunctionreferencesolution:
     image: ${DOCKER_REGISTRY-}azfunctionreferencesolution
     build:
       context: .
       dockerfile: AzFunctionReferenceSolution/Dockerfile
+  eh-sb-emualtor:
+    container_name: "eventhubs-emulator"
+    image: "mcr.microsoft.com/azure-messaging/eventhubs-emulator:latest"
+    pull_policy: missing
+    volumes:
+      - "./config/event_hub_config.json:/Eventhubs_Emulator/ConfigFiles/Config.json"
+    ports:
+      - "5673:5672"
+      - "9092:9092"
+    environment:
+      BLOB_SERVER: azurite
+      METADATA_SERVER: azurite
+      ACCEPT_EULA: Y
+    depends_on:
+      - azurite
+    networks:
+      eh-sb-emualtor:
+        aliases:
+          - "eventhubs-emulator"
+
+  azurite:
+    container_name: "azurite"
+    image: "mcr.microsoft.com/azure-storage/azurite:latest"
+    pull_policy: missing
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    networks:
+      eh-sb-emualtor:
+        aliases:
+          - "azurite"
+
+  sb-emualtor:
+    container_name: "servicebus-emulator"
+    image: mcr.microsoft.com/azure-messaging/servicebus-emulator:latest
+    pull_policy: missing
+    volumes:
+      - "./config/svc_bus_config.json:/ServiceBus_Emulator/ConfigFiles/Config.json"
+    ports:
+      - "5672:5672"
+    environment:
+      SQL_SERVER: sqledge
+      ACCEPT_EULA: Y
+      <<: *common-variables
+    depends_on:
+      - sqledge
+    networks:
+      eh-sb-emualtor:
+        aliases:
+          - "svcbus-emulator"
+
+  sqledge:
+    container_name: "sqledge"
+    image: "mcr.microsoft.com/azure-sql-edge:latest"
+    pull_policy: missing
+    networks:
+      eh-sb-emualtor:
+        aliases:
+          - "sqledge"
+    environment:
+      ACCEPT_EULA: Y
+      <<: *common-variables
+
+networks:
+  eh-sb-emualtor:
