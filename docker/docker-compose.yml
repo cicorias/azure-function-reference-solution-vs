@@ -7,7 +7,7 @@ services:
   azfunctionreferencesolution:
     image: ${DOCKER_REGISTRY-}azfunctionreferencesolution
     build:
-      context: .
+      context: ..
       dockerfile: AzFunctionReferenceSolution/Dockerfile
     networks:
         - eventhubservice

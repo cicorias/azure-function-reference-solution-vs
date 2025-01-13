@@ -4,6 +4,7 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
+    <!-- <DockerComposeBaseFilePath></DockerComposeBaseFilePath> -->
     <ProjectGuid>f404539b-d282-4d4f-9148-bab03e7fd382</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
