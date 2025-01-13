@@ -1,4 +1,4 @@
-# services:
-#   azfunctionreferencesolution:
-#     environment:
-#       - ASPNETCORE_ENVIRONMENT=Development
+services:
+  azfunctionreferencesolution:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

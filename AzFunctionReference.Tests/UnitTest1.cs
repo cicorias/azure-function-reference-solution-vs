@@ -1,9 +1,8 @@
 using Microsoft.Extensions.Logging.Abstractions;
-
-using AzFunctionReferenceSolution;
 using Microsoft.Extensions.Logging;
 using Azure.Messaging.EventGrid;
 using System.Diagnostics;
+using AzFunctionReferenceSolution.Functions;
 
 
 namespace AzFunctionReference.Tests
