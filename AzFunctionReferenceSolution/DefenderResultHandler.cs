@@ -12,6 +12,7 @@ namespace AzFunctionReferenceSolution
     public class DefenderResultHandler(ILogger<DefenderResultHandler> logger)
     {
         [Function(nameof(DefenderResultHandler))]
+        [EventGridOutput()]
         public void Run([EventGridTrigger] EventGridEvent resultEvent)
         {
             logger.LogInformation("Received event with subject: {subject}", resultEvent.Subject);
