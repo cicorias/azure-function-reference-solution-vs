@@ -1,0 +1,16 @@
+POST http://localhost:7071/runtime/webhooks/EventGrid?functionName=DefenderResultHandler
+Content-Type: application/json
+aeg-event-type: Notification
+
+{
+    "topic": "Test",
+    "subject": "Local/RestClient",
+    "id": "00000000-0000-0000-0000-000000000001",
+    "eventType": "Test",
+    "eventTime": "2024-01-01T00:00:00.000Z",
+    "data":{
+        "message": "Hello Test!"
+    },
+    "dataVersion": "",
+    "metadataVersion": "1"
+}
