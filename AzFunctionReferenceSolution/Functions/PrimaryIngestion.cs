@@ -11,7 +11,7 @@ namespace AzFunctionReferenceSolution.Functions
     public class PrimaryIngestion(ILogger<PrimaryIngestion> logger)
     {
         [Function(nameof(PrimaryIngestion))]
-        [ServiceBusOutput("queue.1", Connection = "APP_TARGET_SERVICE_BUS_QUEUE")]
+        [ServiceBusOutput("%APP_FIRST_QUEUE%", Connection = "APP_TARGET_SERVICE_BUS_QUEUE")]
         public BusinessEvent[] Run([EventHubTrigger("ns1", Connection = "APP_TARGET_EVENT_HUB", ConsumerGroup = "primaryConsumerGroup")] DefenderScanResult[] events)
         {
             var businessEvents = new List<BusinessEvent>();

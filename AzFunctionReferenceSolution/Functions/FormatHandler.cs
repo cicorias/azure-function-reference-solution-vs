@@ -10,7 +10,7 @@ namespace AzFunctionReferenceSolution.Functions
     {
         [Function(nameof(FormatHandler))]
         public async Task Run(
-            [ServiceBusTrigger("queue.1", Connection = "APP_TARGET_SERVICE_BUS_QUEUE")]
+            [ServiceBusTrigger("%APP_FIRST_QUEUE%", Connection = "APP_TARGET_SERVICE_BUS_QUEUE")]
             ServiceBusReceivedMessage message,
             ServiceBusMessageActions messageActions)
         {
