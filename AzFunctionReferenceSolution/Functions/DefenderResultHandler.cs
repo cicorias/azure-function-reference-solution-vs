@@ -19,23 +19,11 @@ namespace AzFunctionReferenceSolution.Functions
         [EventHubOutput("ns1", Connection = "APP_TARGET_EVENT_HUB")]
         public async Task<DefenderScanResult> Run(
             [EventGridTrigger] EventGridEvent resultEvent,
-            [BlobInput("samples-workitems/{data.scanResultType}")] string myBlob,
-            [BlobInput("samples-workitems")] BlobContainerClient bcClient,
             FunctionContext context)
         {
+
+            logger.LogInformation("------- Received from Event Grid ------");
             logger.LogInformation("Received event with subject: {subject}", resultEvent.Subject);
-
-            var foo = context.BindingContext.BindingData;
-
-            var foo2 = bcClient.GetBlobClient("sample1.txt"); // resultEvent.Subject);
-            var foo3 = await foo2.DownloadContentAsync();
-
-            //var ev = new EventData(resultEvent.Data);  //Encoding.UTF8.GetBytes(resultEvent.Data.ToString()))
-            ////{
-            ////    ContentType = "application/json",
-            ////};
-
-            //ev.Properties["siteid"] = "ABC1234";
 
             var rv = new DefenderScanResult
             {

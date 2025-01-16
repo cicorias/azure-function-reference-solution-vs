@@ -14,6 +14,7 @@ namespace AzFunctionReferenceSolution.Functions
             ServiceBusReceivedMessage message,
             ServiceBusMessageActions messageActions)
         {
+            logger.LogInformation("------- Received from Service Bus Queue ------");
             logger.LogInformation("Message ID: {id}", message.MessageId);
             logger.LogInformation("Message Body: {body}", message.Body);
             logger.LogInformation("Message Content-Type: {contentType}", message.ContentType);

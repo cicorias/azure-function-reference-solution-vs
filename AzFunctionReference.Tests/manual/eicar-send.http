@@ -1,0 +1,27 @@
+POST http://localhost:32458/runtime/webhooks/EventGrid?functionName=DefenderResultHandler
+Aeg-Event-Type: Notification
+Content-Type: application/json
+
+
+{
+    "id": "3f2a13e5-2417-4b9d-9f4c-5aae6abb6bdf",
+    "subject": "storageAccounts/dkkakkakkhhkalsk/containers/dropzone/blobs/eicar.com.txt",
+    "data": {
+        "correlationId": "3f2a13e5-2417-4b9d-9f4c-5aae6abb6bdf",
+        "blobUri": "https://dkkakkakkhhkalsk.blob.core.windows.net/dropzone/eicar.com.txt",
+        "eTag": "0x8DD2F5DC295EB0C",
+        "scanFinishedTimeUtc": "2025-01-07T20:56:33.3592023Z",
+        "scanResultType": "Malicious",
+        "scanResultDetails": {
+            "malwareNamesFound": [
+                "Virus:DOS/EICAR_Test_File"
+            ],
+            "sha256": "275A021BBFB6489E54D471899F7DB9D1663FC695EC2FE2A2C4538AABF651FD0F"
+        }
+    },
+    "eventType": "Microsoft.Security.MalwareScanningResult",
+    "dataVersion": "1.0",
+    "metadataVersion": "1",
+    "eventTime": "2025-01-07T20:56:33.3601935Z",
+    "topic": "/subscriptions/f48874be-f68e-42a0-acc0-63fede3bb96d/resourceGroups/defendercheck/providers/Microsoft.EventGrid/topics/defenderstuff"
+}
