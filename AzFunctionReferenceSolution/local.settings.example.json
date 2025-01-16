@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "primaryEventHub": "APP_TARGET_EVENT_HUB",
+    "APP_TARGET_EVENT_HUB": "Endpoint=sb://ehemulator;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;",
+    "APP_TARGET_SERVICE_BUS_QUEUE": "Endpoint=sb://sbemulator;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;",
+    "APP_FIRST_QUEUE" :  "queue.1"
+  }
+}
